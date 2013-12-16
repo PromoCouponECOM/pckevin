@@ -12,6 +12,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import session.UtilisateurManager;
+import javax.enterprise.context.RequestScoped;
 
 /**
  *

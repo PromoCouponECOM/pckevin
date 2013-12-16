@@ -28,7 +28,23 @@ public class UtilisateurManager {
         Query query = em.createNamedQuery("Utilisateur.findAll");
         return query.getResultList();
     }
+    public Boolean authUtilisateur(String login, String password){
+        Query query = em.createNamedQuery("Utilisateur.findByMailU");
+        query.setParameter("mailU", login);
+        List<Utilisateur> lu = query.getResultList();
+        for(Utilisateur u : lu)
+            if(u.getPassU()==password)
+                return true;
+        return false;
+    }
     
+    public Utilisateur insertUtilisateur() {
+        
+        em.close();
+        return null;
+    }
+    //update(Utilisateur utilisateur)... updates the database content with the value of the Customer passed as a parameter. The em.merge(utilisateur);
+
     public Utilisateur update(Utilisateur utilisateur) {
         return em.merge(utilisateur);
     }

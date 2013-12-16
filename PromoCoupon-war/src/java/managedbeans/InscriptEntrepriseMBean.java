@@ -15,6 +15,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import session.AdresseManager;
 import session.EntrepriseManager;
+import javax.enterprise.context.RequestScoped;
 
 /**
  *
@@ -22,7 +23,7 @@ import session.EntrepriseManager;
  */
 
 @Named(value = "inscripEntrepriseMBean")
-@SessionScoped
+@RequestScoped
 public class InscriptEntrepriseMBean implements Serializable {
 
     private Map<String, String> settings;

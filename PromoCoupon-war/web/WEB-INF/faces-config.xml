@@ -5,8 +5,13 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <managed-bean>
         <managed-bean-name>adresseMBean</managed-bean-name>
-        <managed-bean-class>managedbeans.AdresseMBean</managed-bean-class>
+        <managed-bean-class>managedbeans.AdresseMBean.java</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>sessionMBean</managed-bean-name>
+        <managed-bean-class>managedbeans.SessionMBean.java</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>categorieMBean</managed-bean-name>
@@ -22,10 +27,6 @@
         <managed-bean-name>UtilisateurMBean</managed-bean-name>
         <managed-bean-class>managedbeans.UtilisateurMBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
-        <managed-property>
-            <property-name>adresseMBean</property-name>
-            <value>#{adresseMBan}</value>
-        </managed-property>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>entrepriseMBean</managed-bean-name>
