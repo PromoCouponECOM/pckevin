@@ -39,4 +39,9 @@ public class OffreManager {
         Query query = em.createNamedQuery("Offre.maxId");
         return (Integer)query.getResultList().get(0)+1;
     }
+    
+//    public List<Offre> getSpecialOffres (String typeOffre){
+//        Query query = em.createNamedQuery("Offre.");
+//        return 
+//    }
 }

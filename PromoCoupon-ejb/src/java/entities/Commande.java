@@ -43,12 +43,12 @@ public class Commande implements Serializable {
     private Long idC;
     @Lob
     @Column(name = "msg_client")
-    private Serializable msgClient;
+    private String msgClient;
     @Lob
     @Column(name = "msg_entreprise")
-    private Serializable msgEntreprise;
+    private String msgEntreprise;
     @Column(name = "status")
-    private Serializable status;
+    private String status;
     @Column(name = "momentC")
     @Temporal(TemporalType.TIMESTAMP)
     private Date momentC;
@@ -77,27 +77,27 @@ public class Commande implements Serializable {
         this.idC = idC;
     }
 
-    public Serializable getMsgClient() {
+    public String getMsgClient() {
         return msgClient;
     }
 
-    public void setMsgClient(Serializable msgClient) {
+    public void setMsgClient(String msgClient) {
         this.msgClient = msgClient;
     }
 
-    public Serializable getMsgEntreprise() {
+    public String getMsgEntreprise() {
         return msgEntreprise;
     }
 
-    public void setMsgEntreprise(Serializable msgEntreprise) {
+    public void setMsgEntreprise(String msgEntreprise) {
         this.msgEntreprise = msgEntreprise;
     }
 
-    public Serializable getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Serializable status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

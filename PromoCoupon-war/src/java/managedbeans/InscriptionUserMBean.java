@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.*;
 import session.AdresseManager;
 import session.UtilisateurManager;
 
@@ -21,7 +21,7 @@ import session.UtilisateurManager;
  * @author liu
  */
 @Named(value = "inscriptionUserMBean")
-@SessionScoped
+@RequestScoped
 
 public class InscriptionUserMBean implements Serializable {
 
@@ -45,6 +45,10 @@ public class InscriptionUserMBean implements Serializable {
     }
 
     public String save() {
+        if( userM.emailUsed(settings.get("mail")) ){
+            return "ERROR";
+        }
+        
         adr.setIdAdresse(adrM.nextId());
         adr.setNumEtRue(settings.get("rue"));
         adr.setComple(settings.get("compl"));
