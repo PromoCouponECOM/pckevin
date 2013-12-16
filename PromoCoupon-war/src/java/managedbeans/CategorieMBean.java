@@ -8,6 +8,7 @@ import entities.Categorie;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import session.CategorieManager;
@@ -17,7 +18,7 @@ import session.CategorieManager;
  * @author John624
  */
 @Named(value="categorieMBean")
-@SessionScoped
+@RequestScoped
 public class CategorieMBean implements Serializable{
     @EJB
     private CategorieManager categorieManager;

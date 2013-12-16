@@ -17,13 +17,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import session.AdresseManager;
 import session.UtilisateurManager;
-
+import javax.enterprise.context.RequestScoped;
 /**
  *
  * @author liu
  */
 @Named(value = "inscriptionMBean")
-@SessionScoped
+@RequestScoped
 
 public class InscriptionMBean implements Serializable{
     //@PersistenceContext(unitName = "PromoCoupon-ejbPU")

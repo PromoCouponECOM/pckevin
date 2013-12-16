@@ -11,13 +11,14 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import session.UtilisateurManager;
+import javax.enterprise.context.RequestScoped;
 
 /**
  *
  * @author John624
  */
 @Named(value = "UtilisateurMBean")
-@SessionScoped
+@RequestScoped
 public class UtilisateurMBean implements Serializable {
 
     @EJB

@@ -46,7 +46,7 @@ public class Utilisateur implements Serializable {
     @Column(name = "idU")
     private Integer idU;
     @Size(max = 20)
-    @Column(name = "mailU")
+    @Column(name = "mailU", unique=true)
     private String mailU;
     @Size(max = 10)
     @Column(name = "telU")

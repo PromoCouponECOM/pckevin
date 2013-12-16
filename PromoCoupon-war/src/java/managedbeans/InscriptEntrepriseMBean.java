@@ -16,6 +16,7 @@ import javax.inject.Named;
 import javax.persistence.PersistenceContext;
 import session.AdresseManager;
 import session.EntrepriseManager;
+import javax.enterprise.context.RequestScoped;
 
 /**
  *
@@ -23,7 +24,7 @@ import session.EntrepriseManager;
  */
 
 @Named(value = "inscripEntrepriseMBean")
-@SessionScoped
+@RequestScoped
 public class InscriptEntrepriseMBean implements Serializable {
 
     //@PersistenceContext(unitName = "PromoCoupon-ejbPU")

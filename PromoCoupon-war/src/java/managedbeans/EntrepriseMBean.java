@@ -11,13 +11,14 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import session.EntrepriseManager;
+import javax.enterprise.context.RequestScoped;
 
 /**
  *
  * @author John624
  */
 @Named(value="entrepriseMBean")
-@SessionScoped
+@RequestScoped
 public class EntrepriseMBean implements Serializable {
 
     private List<Entreprise> entreprises;

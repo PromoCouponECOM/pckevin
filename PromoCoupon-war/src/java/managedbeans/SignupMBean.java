@@ -12,13 +12,14 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import session.AdresseManager;
 import session.UtilisateurManager;
+import javax.enterprise.context.RequestScoped;
 
 /**
  *
  * @author liuju
  */
 @Named(value = "signupMBean")
-@SessionScoped
+@RequestScoped
 public class SignupMBean implements Serializable {
 
     /**

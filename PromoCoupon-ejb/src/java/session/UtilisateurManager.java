@@ -29,7 +29,16 @@ public class UtilisateurManager {
         //System.out.println("²²²²²²²²²²²²²²²²²²²²²²²²²²²²²²²²²²²");
         return query.getResultList();
     }
-
+    public Boolean authUtilisateur(String login, String password){
+        Query query = em.createNamedQuery("Utilisateur.findByMailU");
+        query.setParameter("mailU", login);
+        List<Utilisateur> lu = query.getResultList();
+        for(Utilisateur u : lu)
+            if(u.getPassU()==password)
+                return true;
+        return false;
+    }
+    
     public Utilisateur insertUtilisateur() {
         
         em.close();

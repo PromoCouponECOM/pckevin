@@ -27,7 +27,15 @@ public class EntrepriseManager {
         Query query = em.createNamedQuery("Entreprise.findAll");
         return query.getResultList();
     }
-
+    public Boolean authEntreprise(String login, String password){
+        Query query = em.createNamedQuery("Entreprise.findByMailE");
+        query.setParameter("mailE", login);
+        List<Entreprise> le = query.getResultList();
+        for(Entreprise e : le)
+            if(e.getPassE()==password)
+                return true;
+        return false;
+    }
     public Entreprise update(Entreprise entreprise) {
         return em.merge(entreprise);
     }
