@@ -13,7 +13,6 @@ import java.util.Map;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.persistence.PersistenceContext;
 import session.AdresseManager;
 import session.EntrepriseManager;
 
@@ -26,7 +25,6 @@ import session.EntrepriseManager;
 @SessionScoped
 public class InscriptEntrepriseMBean implements Serializable {
 
-    //@PersistenceContext(unitName = "PromoCoupon-ejbPU")
     private Map<String, String> settings;
     @EJB
     private AdresseManager adrM;
@@ -52,7 +50,7 @@ public class InscriptEntrepriseMBean implements Serializable {
     public void save(){
         
         //update db adresse
-        adr.setIdAdresse(Long.parseLong(settings.get("idAdr")));
+        adr.setIdAdresse(adrM.nextId());
         adr.setNumEtRue(settings.get("rue"));
         adr.setComple(settings.get("compl"));
         adr.setVille(settings.get("ville"));
@@ -61,9 +59,19 @@ public class InscriptEntrepriseMBean implements Serializable {
         adr.setDateModif(new Date());
         adrM.update(adr);
         
-        //
-        //in=new Integer(settings.get("idEnp"));
-        //entrp.setIdE(Integer());
+        entrp.setIdE(entM.nextId());
+        entrp.setMailE(settings.get("mailE"));
+        entrp.setNomE(settings.get("nomE"));
+        entrp.setPassE(settings.get("passE"));
+        entrp.setResuE(settings.get("resuE"));
+        entrp.setTelE(settings.get("telE"));
+        entrp.setConsulE(settings.get("consulE"));
+        entrp.setRib(settings.get("rib"));
+        entrp.setSiret(settings.get("siret"));
+        entrp.setAdrE(adr);
+        entrp.setDateModif(new Date());
+        entrp.setValidation(new Integer(0));
+        entM.update(entrp);
     }
     
      public Map<String, String> getSettings() {

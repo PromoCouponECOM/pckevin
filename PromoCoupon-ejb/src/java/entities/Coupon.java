@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "Coupon")
 @XmlRootElement
 @NamedQueries({
+    
+    @NamedQuery(name = "Coupon.maxId", query = "SELECT max(c.idCoupon) FROM Coupon c"),
     @NamedQuery(name = "Coupon.findAll", query = "SELECT c FROM Coupon c"),
     @NamedQuery(name = "Coupon.findByIdCoupon", query = "SELECT c FROM Coupon c WHERE c.idCoupon = :idCoupon"),
     @NamedQuery(name = "Coupon.findByReference", query = "SELECT c FROM Coupon c WHERE c.reference = :reference"),

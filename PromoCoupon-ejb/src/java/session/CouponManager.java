@@ -27,7 +27,7 @@ public class CouponManager {
 //        return query;
 //    }singleton
     
-    public List<Coupon> getAllCoupon() {
+    public List<Coupon> getAllCoupons() {
         Query query = em.createNamedQuery("Coupon.findAll");
         return query.getResultList();
     }
@@ -38,5 +38,10 @@ public class CouponManager {
 
     public void persist(Object object) {
         em.persist(object);
+    }
+    
+    public Integer nextId(){
+        Query query = em.createNamedQuery("Coupon.maxId");
+        return (Integer)query.getResultList().get(0)+1;
     }
 }

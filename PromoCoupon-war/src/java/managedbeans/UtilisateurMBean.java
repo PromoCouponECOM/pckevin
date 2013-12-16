@@ -6,9 +6,10 @@ package managedbeans;
 
 import entities.Utilisateur;
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import session.UtilisateurManager;
 
@@ -17,7 +18,7 @@ import session.UtilisateurManager;
  * @author John624
  */
 @Named(value = "UtilisateurMBean")
-@SessionScoped
+@RequestScoped
 public class UtilisateurMBean implements Serializable {
 
     @EJB
@@ -42,6 +43,7 @@ public class UtilisateurMBean implements Serializable {
         }
     }
 
+    
     /**
      * returns details of a customer. Useful for displaying in a form a
      * customer's details
@@ -55,6 +57,8 @@ public class UtilisateurMBean implements Serializable {
     public Utilisateur getUser(){
         return user;
     }
+
+    
     /**
      * Action handler - Called when a line in the table is clicked
      *
@@ -73,23 +77,13 @@ public class UtilisateurMBean implements Serializable {
      * @return
      */
     public String update() {
-       /* System.out.println("###UPDATE###");
-        System.out.println("###"+adresseM+"###");
-        System.out.println("###"+user+"###");
-        System.out.println("###"+user.getAdrU()+"###");
-        adresseM.update(user.getAdrU());*/
         user = utilisateurM.update(user);
-        return "UtilisateurList"; // will display the customer list in a table  
+        return "UtilisateurList";
     }
 
     public String update(Utilisateur u) {
-       /* System.out.println("###UPDATE###");
-        System.out.println("###"+adresseM+"###");
-        System.out.println("###"+user+"###");
-        System.out.println("###"+user.getAdrU()+"###");
-        adresseM.update(user.getAdrU());*/
         user = utilisateurM.update(u);
-        return "UtilisateurList"; // will display the customer list in a table  
+        return "UtilisateurList"; 
     }
     /**
      * Action handler - returns to the list of customers in the table
@@ -97,5 +91,16 @@ public class UtilisateurMBean implements Serializable {
     public String list() {
         System.out.println("###LIST###");
         return "UtilisateurList";
+    }
+    
+    public Utilisateur getUserById(Integer id){
+         if ((users == null) || (users.isEmpty())) {
+            refresh();
+        }
+        for (Utilisateur tmp : users) {
+            if(tmp.getIdU()==id)
+                return tmp;
+        }
+        return null;
     }
 }

@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "Adresse")
 @XmlRootElement
 @NamedQueries({
+    @NamedQuery(name = "Adresse.maxId", query = "SELECT max(a.idAdresse) FROM Adresse a"),
     @NamedQuery(name = "Adresse.findAll", query = "SELECT a FROM Adresse a"),
     @NamedQuery(name = "Adresse.findByIdAdresse", query = "SELECT a FROM Adresse a WHERE a.idAdresse = :idAdresse"),
     @NamedQuery(name = "Adresse.findByNumEtRue", query = "SELECT a FROM Adresse a WHERE a.numEtRue = :numEtRue"),

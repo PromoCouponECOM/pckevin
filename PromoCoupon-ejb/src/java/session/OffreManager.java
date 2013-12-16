@@ -34,4 +34,9 @@ public class OffreManager {
     public void persist(Object object) {
         em.persist(object);
     }
+    
+    public Integer nextId(){
+        Query query = em.createNamedQuery("Offre.maxId");
+        return (Integer)query.getResultList().get(0)+1;
+    }
 }

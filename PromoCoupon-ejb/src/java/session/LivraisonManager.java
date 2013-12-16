@@ -20,7 +20,7 @@ import javax.persistence.Query;
 @LocalBean
 public class LivraisonManager {
 
-    @PersistenceContext(unitName = "ECOM-ejbPU")
+    @PersistenceContext(unitName = "PromoCoupon-ejbPU")
     private EntityManager em;
 
     public List<Livraison> getAllLivraison() {
@@ -38,7 +38,6 @@ public class LivraisonManager {
     
     public Integer nextId(){
         Query query = em.createNamedQuery("Livraison.maxId");
-        return query.getResultList().indexOf(0)+1;
+        return (Integer)query.getResultList().get(0)+1;
     }
-
 }

@@ -36,4 +36,9 @@ public class CategorieManager {
     public void persist(Object object){
         em.persist(object);
     }
+    
+    public Integer nextId(){
+        Query query = em.createNamedQuery("Categorie.maxId");
+        return (Integer)query.getResultList().get(0)+1;
+    }
 }

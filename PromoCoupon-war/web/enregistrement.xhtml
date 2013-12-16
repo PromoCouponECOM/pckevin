@@ -13,33 +13,33 @@
                 <h1><h:outputText value="Create/Edit"/></h1>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="IdU:" for="idU" />
-                    <h:inputText id="idU" value="#{inscriptionMBean.settings['idUser']}" title="IdU" required="false" requiredMessage="The IdU field is required."/>
+                    <h:inputText id="idU" value="#{inscriptionUserMBean.settings['idUser']}" title="IdU" required="false" requiredMessage="The IdU field is required."/>
                     <h:outputLabel value="MailU:" for="mailU" />
-                    <h:inputText id="mailU" value="#{inscriptionMBean.settings['mail']}" title="MailU" />
+                    <h:inputText id="mailU" value="#{inscriptionUserMBean.settings['mail']}" title="MailU" />
                     <h:outputLabel value="TelU:" for="telU" />
-                    <h:inputText id="telU" value="#{inscriptionMBean.settings['tel']}" title="TelU" />
+                    <h:inputText id="telU" value="#{inscriptionUserMBean.settings['tel']}" title="TelU" />
                     <h:outputLabel value="PassU:" for="passU" />
-                    <h:inputText id="passU" value="#{inscriptionMBean.settings['pwd']}" title="PassU" />
+                    <h:inputText id="passU" value="#{inscriptionUserMBean.settings['pwd']}" title="PassU" />
                     <h:outputLabel value="NomU:" for="nomU" />
-                    <h:inputText id="nomU" value="#{inscriptionMBean.settings['nom']}" title="NomU" />
+                    <h:inputText id="nomU" value="#{inscriptionUserMBean.settings['nom']}" title="NomU" />
                     <h:outputLabel value="PrenomU:" for="prenomU" />
-                    <h:inputText id="prenomU" value="#{inscriptionMBean.settings['prenom']}" title="PrenomU" />
+                    <h:inputText id="prenomU" value="#{inscriptionUserMBean.settings['prenom']}" title="PrenomU" />
                     <h:outputLabel value="Sexe:" for="sexe" />
-                    <h:inputText id="sexe" value="#{inscriptionMBean.settings['sexe']}" title="Sexe" />
+                    <h:inputText id="sexe" value="#{inscriptionUserMBean.settings['sexe']}" title="Sexe" />
                      <h:outputLabel value="IdAdresse:" for="idAdresse" />
-                    <h:inputText id="idAdresse" value="#{inscriptionMBean.settings['idAdr']}" title="IdAdresse" required="true" requiredMessage="The IdAdresse field is required."/>
+                    <h:inputText id="idAdresse" value="#{inscriptionUserMBean.settings['idAdr']}" title="IdAdresse" required="true" requiredMessage="The IdAdresse field is required."/>
                     <h:outputLabel value="NumEtRue:" for="numEtRue" />
-                    <h:inputText id="numEtRue" value="#{inscriptionMBean.settings['rue']}" title="NumEtRue" />
+                    <h:inputText id="numEtRue" value="#{inscriptionUserMBean.settings['rue']}" title="NumEtRue" />
                     <h:outputLabel value="Comple:" for="comple" />
-                    <h:inputText id="comple" value="#{inscriptionMBean.settings['compl']}" title="Comple" />
+                    <h:inputText id="comple" value="#{inscriptionUserMBean.settings['compl']}" title="Comple" />
                     <h:outputLabel value="CodePostale:" for="codePostale" />
-                    <h:inputText id="codePostale" value="#{inscriptionMBean.settings['code']}" title="CodePostale" />
+                    <h:inputText id="codePostale" value="#{inscriptionUserMBean.settings['code']}" title="CodePostale" />
                     <h:outputLabel value="Ville:" for="ville" />
-                    <h:inputText id="ville" value="#{inscriptionMBean.settings['ville']}" title="Ville" />
+                    <h:inputText id="ville" value="#{inscriptionUserMBean.settings['ville']}" title="Ville" />
                     <h:outputLabel value="Pays:" for="pays" />
-                    <h:inputText id="pays" value="#{inscriptionMBean.settings['pays']}" title="Pays" />
+                    <h:inputText id="pays" value="#{inscriptionUserMBean.settings['pays']}" title="Pays" />
                 </h:panelGrid> 
-                <h:commandButton id="update" value="Update" action="#{inscriptionMBean.save()}"/> 
+                <h:commandButton id="update" value="Update" action="#{inscriptionUserMBean.save()}"/> 
             </h:form>
         </f:view>
 
