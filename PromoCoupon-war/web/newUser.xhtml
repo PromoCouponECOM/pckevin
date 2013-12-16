@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="IdU:" for="idU" />
+                    <h:inputText id="idU" value="#{UtilisateurMBean.details.idU}" title="IdU" required="false" requiredMessage="The IdU field is required."/>
+                    <h:outputLabel value="MailU:" for="mailU" />
+                    <h:inputText id="mailU" value="#{UtilisateurMBean.details.mailU}" title="MailU" />
+                    <h:outputLabel value="TelU:" for="telU" />
+                    <h:inputText id="telU" value="#{UtilisateurMBean.details.telU}" title="TelU" />
+                    <h:outputLabel value="PassU:" for="passU" />
+                    <h:inputText id="passU" value="#{UtilisateurMBean.details.passU}" title="PassU" />
+                    <h:outputLabel value="NomU:" for="nomU" />
+                    <h:inputText id="nomU" value="#{UtilisateurMBean.details.nomU}" title="NomU" />
+                    <h:outputLabel value="PrenomU:" for="prenomU" />
+                    <h:inputText id="prenomU" value="#{UtilisateurMBean.details.prenomU}" title="PrenomU" />
+                    <h:outputLabel value="Sexe:" for="sexe" />
+                    <h:inputText id="sexe" value="#{UtilisateurMBean.details.sexe}" title="Sexe" />
+                    <h:outputLabel value="DataModif:" for="dataModif" />
+                    <h:inputText id="dataModif" value="#{UtilisateurMBean.details.dataModif}" title="DataModif" >
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:inputText>
+                    <h:outputLabel value="AdrU:" for="adrU" />
+                    <h:selectOneMenu id="adrU" value="#{UtilisateurMBean.details.adrU}" title="AdrU" >
+                       <!-- <f:selectItems value="#{adresseMBean.details}"/>   -->
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandButton id="back" value="Back" action="#{UtilisateurMBean.list()}"/>  
+                <h:commandButton id="update" value="Update" action="#{UtilisateurMBean.update()}"/> 
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

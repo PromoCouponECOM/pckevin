@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <h:dataTable value="#{UtilisateurMBean.users}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdU"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idU}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="MailU"/>
+                        </f:facet>
+                        <h:outputText value="#{item.mailU}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="TelU"/>
+                        </f:facet>
+                        <h:outputText value="#{item.telU}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="PassU"/>
+                        </f:facet>
+                        <h:outputText value="#{item.passU}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="NomU"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nomU}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="PrenomU"/>
+                        </f:facet>
+                        <h:outputText value="#{item.prenomU}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Sexe"/>
+                        </f:facet>
+                        <h:outputText value="#{item.sexe}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="DataModif"/>
+                        </f:facet>
+                        <h:outputText value="#{item.dataModif}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </h:column>    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdAdresse"/>
+                        </f:facet>
+                        <h:outputText value="#{item.adrU.idAdresse}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="NumEtRue"/>
+                        </f:facet>
+                        <h:outputText value="#{item.adrU.numEtRue}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Comple"/>
+                        </f:facet>
+                        <h:outputText value="#{item.adrU.comple}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="CodePostale"/>
+                        </f:facet>
+                        <h:outputText value="#{item.adrU.codePostale}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ville"/>
+                        </f:facet>
+                        <h:outputText value="#{item.adrU.ville}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Pays"/>
+                        </f:facet>
+                        <h:outputText value="#{item.adrU.pays}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="DateModif"/>
+                        </f:facet>
+                        <h:outputText value="#{item.adrU.dateModif}">
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                        </h:outputText>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+     <h:head>
+		<meta charset="utf-8" />
+                <link rel="stylesheet" href="css/signup.css" />
+		<link rel="stylesheet" href="css/toolbar.css" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$('#boxLogin').hide(); //Si l'utilisateur a javascript on cache la box de login pour pas surcharger la page
+
+			$('.click_connect').click(function(){
+				$('#boxLogin').fadeIn(400);
+			});
+
+			$('.fermer').click(function(){
+				$('#boxLogin').fadeOut(400);
+			});
+
+			$('#mdpPerdu').click(function(){
+				erreur("mdp_perdu");
+				return false;
+			});
+
+			$('.field').focus(function(){ //Supprime les textes par défauts des input lors du click sur ceux-ci
+				if($(this).val()=='Email' || $(this).val()=='Mot de passe' || $(this).val()=='Rechercher'){
+					$(this).val('');
+				}
+			});
+			
+			$('#listeVille').hide(); //Si l'utilisateur a javascript on cache l'affichage des villes
+			
+			$('.click_display_ville').click(function(){
+				if ($('#listeVille').is(':visible')) {
+					$('#listeVille').fadeOut(400);
+				}
+				else {
+					$('#listeVille').fadeIn(400);
+				}
+			});					
+		});
+		</script>
+		
+        <title>Sign Up</title>
+    </h:head>
+    <h:body> 
+<f:view>
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="IdU:" for="idU" />
+                    <h:inputText id="idU" value="#{inscriptionMBean.settings['idUser']}" title="IdU" required="false" requiredMessage="The IdU field is required."/>
+                    <h:outputLabel value="MailU:" for="mailU" />
+                    <h:inputText id="mailU" value="#{inscriptionMBean.settings['mail']}" title="MailU" />
+                    <h:outputLabel value="TelU:" for="telU" />
+                    <h:inputText id="telU" value="#{inscriptionMBean.settings['tel']}" title="TelU" />
+                    <h:outputLabel value="PassU:" for="passU" />
+                    <h:inputText id="passU" value="#{inscriptionMBean.settings['pwd']}" title="PassU" />
+                    <h:outputLabel value="NomU:" for="nomU" />
+                    <h:inputText id="nomU" value="#{inscriptionMBean.settings['nom']}" title="NomU" />
+                    <h:outputLabel value="PrenomU:" for="prenomU" />
+                    <h:inputText id="prenomU" value="#{inscriptionMBean.settings['prenom']}" title="PrenomU" />
+                    <h:outputLabel value="Sexe:" for="sexe" />
+                    <h:inputText id="sexe" value="#{inscriptionMBean.settings['sexe']}" title="Sexe" />
+                     <h:outputLabel value="IdAdresse:" for="idAdresse" />
+                    <h:inputText id="idAdresse" value="#{inscriptionMBean.settings['idAdr']}" title="IdAdresse" required="true" requiredMessage="The IdAdresse field is required."/>
+                    <h:outputLabel value="NumEtRue:" for="numEtRue" />
+                    <h:inputText id="numEtRue" value="#{inscriptionMBean.settings['rue']}" title="NumEtRue" />
+                    <h:outputLabel value="Comple:" for="comple" />
+                    <h:inputText id="comple" value="#{inscriptionMBean.settings['compl']}" title="Comple" />
+                    <h:outputLabel value="CodePostale:" for="codePostale" />
+                    <h:inputText id="codePostale" value="#{inscriptionMBean.settings['code']}" title="CodePostale" />
+                    <h:outputLabel value="Ville:" for="ville" />
+                    <h:inputText id="ville" value="#{inscriptionMBean.settings['ville']}" title="Ville" />
+                    <h:outputLabel value="Pays:" for="pays" />
+                    <h:inputText id="pays" value="#{inscriptionMBean.settings['pays']}" title="Pays" />
+                </h:panelGrid> 
+                <h:commandButton id="update" value="Update" action="#{inscriptionMBean.save()}"/> 
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

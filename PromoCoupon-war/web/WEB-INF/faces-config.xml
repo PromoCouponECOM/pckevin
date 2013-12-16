@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <managed-bean>
+        <managed-bean-name>adresseMBean</managed-bean-name>
+        <managed-bean-class>managedbeans.AdresseMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>categorieMBean</managed-bean-name>
+        <managed-bean-class>managedbeans.CategorieMBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>offreMBean</managed-bean-name>
+        <managed-bean-class>managedbeans.OffreMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>UtilisateurMBean</managed-bean-name>
+        <managed-bean-class>managedbeans.UtilisateurMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>adresseMBean</property-name>
+            <value>#{adresseMBan}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>entrepriseMBean</managed-bean-name>
+        <managed-bean-class>managedbeans.EntrepriseMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+     <managed-bean>
+        <managed-bean-name>signupMBean</managed-bean-name>
+        <managed-bean-class>managedbeans.SignupMBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>inscriptEntrepriseMBean</managed-bean-name>
+        <managed-bean-class>managedbeans.InscriptEntrepriseMBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+</faces-config>

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+         <f:view>
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="IdU:" for="idU" />
+                    <h:inputText id="idU" value="#{inscriptEntrepriseMBean.settings['idUser']}" title="IdU" required="false" requiredMessage="The IdU field is required."/>
+                    <h:outputLabel value="MailU:" for="mailU" />
+                    <h:inputText id="mailU" value="#{inscriptEntrepriseMBean.settings['mail']}" title="MailU" />
+                    <h:outputLabel value="TelU:" for="telU" />
+                    <h:inputText id="telU" value="#{inscriptEntrepriseMBean.settings['tel']}" title="TelU" />
+                    <h:outputLabel value="PassU:" for="passU" />
+                    <h:inputText id="passU" value="#{inscriptEntrepriseMBean.settings['pwd']}" title="PassU" />
+                    <h:outputLabel value="NomU:" for="nomU" />
+                    <h:inputText id="nomU" value="#{inscriptEntrepriseMBean.settings['nom']}" title="NomU" />
+                    <h:outputLabel value="PrenomU:" for="prenomU" />
+                    <h:inputText id="prenomU" value="#{inscriptEntrepriseMBean.settings['prenom']}" title="PrenomU" />
+                    <h:outputLabel value="Sexe:" for="sexe" />
+                    <h:inputText id="sexe" value="#{inscriptEntrepriseMBean.settings['sexe']}" title="Sexe" />
+                     <h:outputLabel value="IdAdresse:" for="idAdresse" />
+                    <h:inputText id="idAdresse" value="#{inscriptEntrepriseMBean.settings['idAdr']}" title="IdAdresse" required="true" requiredMessage="The IdAdresse field is required."/>
+                    <h:outputLabel value="NumEtRue:" for="numEtRue" />
+                    <h:inputText id="numEtRue" value="#{inscriptEntrepriseMBean.settings['rue']}" title="NumEtRue" />
+                    <h:outputLabel value="Comple:" for="comple" />
+                    <h:inputText id="comple" value="#{inscriptEntrepriseMBean.settings['compl']}" title="Comple" />
+                    <h:outputLabel value="CodePostale:" for="codePostale" />
+                    <h:inputText id="codePostale" value="#{inscriptEntrepriseMBean.settings['code']}" title="CodePostale" />
+                    <h:outputLabel value="Ville:" for="ville" />
+                    <h:inputText id="ville" value="#{inscriptEntrepriseMBean.settings['ville']}" title="Ville" />
+                    <h:outputLabel value="Pays:" for="pays" />
+                    <h:inputText id="pays" value="#{inscriptEntrepriseMBean.settings['pays']}" title="Pays" />
+                </h:panelGrid> 
+                <h:commandButton id="update" value="Update" action="#{inscriptEntrepriseMBean.save()}"/> 
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
