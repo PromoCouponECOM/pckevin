@@ -49,7 +49,7 @@ public class Coupon implements Serializable {
     @Column(name = "idCoupon")
     private BigDecimal idCoupon;
     @Size(max = 10)
-    @Column(name = "reference")
+    @Column(name = "reference", unique = true)
     private String reference;
     @Column(name = "status")
     private Short status;

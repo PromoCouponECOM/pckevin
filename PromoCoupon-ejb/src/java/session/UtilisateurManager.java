@@ -33,7 +33,7 @@ public class UtilisateurManager {
         query.setParameter("mailU", login);
         List<Utilisateur> lu = query.getResultList();
         for(Utilisateur u : lu)
-            if(u.getPassU()==password)
+            if(u.getPassU().endsWith(password))
                 return true;
         return false;
     }
@@ -55,12 +55,27 @@ public class UtilisateurManager {
         
     public Integer nextId(){
         Query query = em.createNamedQuery("Utilisateur.maxId");
-        return (Integer)query.getResultList().get(0)+1;
+        Integer res = (Integer)query.getResultList().get(0);
+        if(res==null)
+            return new Integer(0);
+        return res+1;
     }
 
     public boolean emailUsed(String mail) {
         Query query = em.createNamedQuery("Utilisateur.findByMailU");
         query.setParameter("mailU", mail);
         return !query.getResultList().isEmpty();
+    }
+    
+        
+    public Utilisateur getUserById(Integer id){
+        List<Utilisateur> users =null;
+        users = getAllUtilisateurs();
+        
+        for (Utilisateur tmp : users) {
+            if(tmp.getIdU()==id)
+                return tmp;
+        }
+        return null;
     }
 }

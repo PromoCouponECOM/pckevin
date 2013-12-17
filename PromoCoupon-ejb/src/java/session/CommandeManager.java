@@ -35,8 +35,11 @@ public class CommandeManager {
         em.persist(object);
     }
             
-    public Integer nextId(){
+    public Long nextId(){
         Query query = em.createNamedQuery("Commande.maxId");
-        return (Integer)query.getResultList().get(0)+1;
+        Long res = (Long)query.getResultList().get(0);
+        if(res==null)
+            return new Long(0);
+        return res+1;
     }
 }

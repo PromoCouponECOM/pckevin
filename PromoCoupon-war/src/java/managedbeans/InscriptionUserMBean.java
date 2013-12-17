@@ -46,7 +46,7 @@ public class InscriptionUserMBean implements Serializable {
 
     public String save() {
         if( userM.emailUsed(settings.get("mail")) ){
-            return "ERROR";
+            return "ERROR.xhtml?msg=EmailExisted";
         }
         
         adr.setIdAdresse(adrM.nextId());
