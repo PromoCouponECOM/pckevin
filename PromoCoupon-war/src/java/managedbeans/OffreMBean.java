@@ -33,7 +33,7 @@ public class OffreMBean implements Serializable{
     }
     
     public List<Offre> getOffres(){
-    if((offres == null) || (offres.isEmpty()))
+        if((offres == null) || (offres.isEmpty()))
             offres = offreManager.getAllOffre();  
         return offreManager.getAllOffre(); 
     }

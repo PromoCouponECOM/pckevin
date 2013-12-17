@@ -44,4 +44,10 @@ public class CouponManager {
         Query query = em.createNamedQuery("Coupon.maxId");
         return (Integer)query.getResultList().get(0)+1;
     }
+
+    public boolean exiteCoupon(String reference) {
+        Query query = em.createNamedQuery("Coupon.findByReference");
+        query.setParameter("reference", reference);
+        return !query.getResultList().isEmpty();
+    }
 }

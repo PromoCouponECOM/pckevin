@@ -41,4 +41,10 @@ public class CategorieManager {
         Query query = em.createNamedQuery("Categorie.maxId");
         return (Integer)query.getResultList().get(0)+1;
     }
+
+    public boolean existeCat(String nomCateg) {
+        Query query = em.createNamedQuery("Categorie.findByIdCateg");
+        query.setParameter("nomCateg", nomCateg);
+        return !query.getResultList().isEmpty();
+    }
 }

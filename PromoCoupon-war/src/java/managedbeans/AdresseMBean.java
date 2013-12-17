@@ -36,13 +36,14 @@ public class AdresseMBean implements Serializable{
      */  
     public List<Adresse> getAdresses() {  
         if((adresses == null) || (adresses.isEmpty()))
-            adresses = adresseManager.getAllAdresses();  
+            refresh();  
         return adresseManager.getAllAdresses();  
     }  
   
-//    public void refresh() {  
-//        tousLesComptes = compteBancaireFacade.findAll();  
-//    }  
+    public void refresh() {  
+        if((adresses == null) || (adresses.isEmpty()))
+            adresses = adresseManager.getAllAdresses();   
+    }  
   
     /** 
      * returns details of a customer. Useful for displaying in a form a customer's details 

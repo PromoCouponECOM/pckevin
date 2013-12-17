@@ -8,7 +8,6 @@ package managedbeans;
 
 import entities.Coupon;
 import java.io.Serializable;
-import java.util.Iterator;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -73,14 +72,10 @@ public class CouponMBean implements Serializable{
     public Coupon getCouponById(Integer idC){
          if((coupons == null) || (coupons.isEmpty()))
             refresh();
-         
-         Iterator ite= coupons.iterator();
-         
-         while(ite.hasNext()){
-             Coupon c = (Coupon) ite.next();
-             if(Integer.valueOf(c.getIdCoupon().intValue())== idC)
-                 return c;
-         }
+         for (Coupon c : coupons) {
+            if(c.getIdCoupon().intValue()== idC)
+                return c;
+        }
         return null;
     }
   
@@ -91,6 +86,8 @@ public class CouponMBean implements Serializable{
      */  
     public String  update() {
         System.out.println("###UPDATE###");  
+        if( couponManager.exiteCoupon(coupon.getReference()) )
+            return "ERROR";
         coupon = couponManager.update(coupon);  
         return "CouponList"; // will display the customer list in a table  
     }  
