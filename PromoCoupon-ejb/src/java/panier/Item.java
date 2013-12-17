@@ -15,19 +15,19 @@ import java.util.List;
 public class Item {
 
     private int idOffre;
-    private List<Integer> idCoupons;
+    private List<Long> idCoupons;
 
-    public Item(int idOffre, int idCoupon) {
+    public Item(int idOffre, long idCoupon) {
         this.idOffre = idOffre;
-        this.idCoupons = new ArrayList<Integer>();
-        this.idCoupons.add(new Integer(idCoupon));
+        this.idCoupons = new ArrayList<Long>();
+        this.idCoupons.add(new Long(idCoupon));
     }
 
-    public void addCoupon(int idCoupon) {
+    public void addCoupon(long idCoupon) {
         this.idCoupons.add(idCoupon);
     }
 
-    public int removeOne() {
+    public long removeOne() {
         if (this.idCoupons.size() > 0) {
             return this.idCoupons.remove(0);
         } else {
