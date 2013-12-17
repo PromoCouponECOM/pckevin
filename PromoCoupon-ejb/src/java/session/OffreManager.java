@@ -40,8 +40,9 @@ public class OffreManager {
         return (Integer)query.getResultList().get(0)+1;
     }
     
-//    public List<Offre> getSpecialOffres (String typeOffre){
-//        Query query = em.createNamedQuery("Offre.");
-//        return 
-//    }
+    public List<Offre> getSpecialOffres (String typeOffre){
+        Query query = em.createQuery("SELECT o FROM Offre o join Ctegorie c on o.categorie=c.idCateg WHERE c.nomCateg =:"+typeOffre);
+        return query.getResultList();
+    }
+    
 }

@@ -24,6 +24,8 @@ public class OffreMBean implements Serializable{
     @EJB
     private OffreManager offreManager;
     private Offre offre;
+    
+    private String type;
     /**
      * Creates a new instance of OffreMBean
      */
@@ -61,5 +63,17 @@ public class OffreMBean implements Serializable{
     public String list() {  
         System.out.println("###LIST###");  
         return "OffreList";  
-    }  
+    }
+    
+    public List<Offre> showTypeOffre(String type){
+          return offreManager.getSpecialOffres(type);
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }
