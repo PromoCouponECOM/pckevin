@@ -38,6 +38,9 @@ public class LivraisonManager {
     
     public Integer nextId(){
         Query query = em.createNamedQuery("Livraison.maxId");
-        return (Integer)query.getResultList().get(0)+1;
+        Integer res = (Integer)query.getResultList().get(0);
+        if(res==null)
+            return new Integer(0);
+        return res+1;
     }
 }
