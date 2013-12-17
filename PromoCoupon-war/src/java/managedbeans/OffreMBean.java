@@ -8,7 +8,6 @@ import entities.Offre;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import session.OffreManager;
 import javax.enterprise.context.RequestScoped;
