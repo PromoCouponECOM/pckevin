@@ -87,7 +87,7 @@ public class CouponMBean implements Serializable{
     public String  update() {
         System.out.println("###UPDATE###");  
         if( couponManager.exiteCoupon(coupon.getReference()) )
-            return "ERROR";
+            return "ERROR.xhtml?msg=CouponExisted";
         coupon = couponManager.update(coupon);  
         return "CouponList"; // will display the customer list in a table  
     }  

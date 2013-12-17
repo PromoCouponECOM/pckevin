@@ -67,7 +67,7 @@ public class CategorieMBean implements Serializable{
     public String update() {  
         System.out.println("###UPDATE###");
         if( categorieManager.existeCat(cat.getNomCateg()) )
-            return "ERROR";
+            return "ERROR.xhtml?msg=categorieExited";
         cat = categorieManager.update(cat);  
         return "CategorieList"; // will display the customer list in a table  
     }  

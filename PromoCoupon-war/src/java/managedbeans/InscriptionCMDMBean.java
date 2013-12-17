@@ -50,12 +50,12 @@ public class InscriptionCMDMBean implements Serializable{
     public String save() {
         user = userM.getUserById(new Integer(0));
         if(user == null)
-            System.out.println("###USER INCONNU###");
+            return "ERROR.xhtml?msg=userInconnu";
         
         coupon = couponM.getCouponById(new Integer(0));
         if(coupon == null)
-            System.out.println("###COUPON INCONNU###");
+            return "ERROR.xhtml?msg=userInconnu";
 
-        return "UtilisateurList";
+        return "CommandeList";
     }
 }
