@@ -44,6 +44,6 @@ public class LivraisonMBean implements Serializable{
         if(livraisons == null || (livraisons.isEmpty())){
         livraisons = livraisonManager.getAllLivraison();
         }
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+     }
+    
 }

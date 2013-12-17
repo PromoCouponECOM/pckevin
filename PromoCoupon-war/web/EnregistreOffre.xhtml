@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+       
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="IdO" for="idO" />
+                    <h:inputText id="idO" value="#{inscriptEntrepriseMBean.settings['idO']}" title="IdO" required="false" requiredMessage="The IdO field is required."/>
+                    <h:outputLabel value="Conseille" for="conseille" />
+                    <h:inputText id="conseille" value="#{inscriptEntrepriseMBean.settings['conseille']}" title="Conseille" />
+                    
+                    <h:outputLabel value="DateDebut" for="dateDebut" />
+                    <p:calendar id="dateDebut" value="#{inscriptionOffreMBean.settings['dateDebut']}" title="DateDebut"></p:calendar>
+            
+                    
+                    <h:outputLabel value="DateFin" for="dateFin" />
+                    <p:calendar id="dateFin" value="#{inscriptEntrepriseMBean.settings['dateDebut']}" title="DateFin"></p:calendar>
+                    
+                    <h:outputLabel value="DateModif" for="dateModif" />
+                    <h:inputText id="dateModif" value="#{inscriptEntrepriseMBean.settings['dateModif']}" title="DateModif" />
+                    <h:outputLabel value="Dscription" for="dscription" />
+                    <h:inputText id="dscription" value="#{inscriptEntrepriseMBean.settings['dscription']}" title="Dscription" />
+                    <h:outputLabel value="Image:" for="image" />
+                    <h:inputText id="image" value="#{inscriptEntrepriseMBean.settings['image']}" title="Image" />
+                    <h:outputLabel value="Limite" for="limite" />
+                    <h:inputText id="limite" value="#{inscriptEntrepriseMBean.settings['limite']}" title="limite" />
+                    <h:outputLabel value="nbCoupons" for="nbCoupons" />
+                    <h:inputText id="nbCoupons" value="#{inscriptEntrepriseMBean.settings['nbCoupons']}" title="NbCoupons"/>
+                    <h:outputLabel value="PrixActuel" for="prixActuel" />
+                    <h:inputText id="prixActuel" value="#{inscriptEntrepriseMBean.settings['prixActuel']}" title="PrixActuel" />
+                    <h:outputLabel value="PrixOrigin" for="prixOrigin" />
+                    <h:inputText id="prixOrigin" value="#{inscriptEntrepriseMBean.settings['prixOrigin']}" title="PrixOrigin" />
+                    <h:outputLabel value="Title" for="title" />
+
+                    <h:inputText id="title" value="#{inscriptEntrepriseMBean.settings['title']}" title="Title" />
+                    <h:outputLabel value="Validation" for="validation" />
+                    <h:inputText id="validation" value="#{inscriptEntrepriseMBean.settings['validation']}" title="Validation" />
+                    
+                    <h:outputLabel value="Categorie" for="categorie" />
+                    <h:outputLabel value="#{categorieMBean.categories.size}" id="lengthCatList"></h:outputLabel>
+                   
+                    <p:selectOneMenu value="#{categorieMBean.categories}" var="type" id="categorielist">
+                       <script>
+                            var list = document.getElementById("lengthCatList");
+                            for (p in list){
+                                
+                            }
+                        </script>
+                        <f:selectItem itemLabel="#{type.nomCateg}" itemValue="1"/>
+                        
+                        <f:selectItem itemLabel="#{type.idCateg}" itemValue="2"/>
+                   
+                    </p:selectOneMenu>
+                    
+                    
+                    
+                    <h:inputText id="categorie" value="#{inscriptEntrepriseMBean.settings['categorie']}" title="Categorie" />
+                
+                </h:panelGrid> 
+                <h:commandButton id="update" value="Update" action="#{inscriptEntrepriseMBean.save()}"/> 
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

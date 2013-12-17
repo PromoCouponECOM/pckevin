@@ -81,8 +81,8 @@ public class Entreprise implements Serializable {
     @Column(name = "dateModif")
     @Temporal(TemporalType.DATE)
     private Date dateModif;
-    @OneToMany(mappedBy = "idU")
-    private Collection<Commande> commandeCollection;
+    //@OneToMany(mappedBy = "idU")
+    //private Collection<Commande> commandeCollection;
     @JoinColumn(name = "adrE", referencedColumnName = "idAdresse")
     @ManyToOne
     private Adresse adrE;
@@ -184,14 +184,14 @@ public class Entreprise implements Serializable {
         this.dateModif = dateModif;
     }
 
-    @XmlTransient
+    /*@XmlTransient
     public Collection<Commande> getCommandeCollection() {
         return commandeCollection;
     }
 
     public void setCommandeCollection(Collection<Commande> commandeCollection) {
         this.commandeCollection = commandeCollection;
-    }
+    }*/
 
     public Adresse getAdrE() {
         return adrE;

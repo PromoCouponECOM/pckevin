@@ -68,16 +68,6 @@ public class CouponMBean implements Serializable{
         this.coupon = coupon;  
         return "Coupondetails"; // will display CustomerDetails.xml JSF page  
     }  
-    
-    public Coupon getCouponById(Integer idC){
-         if((coupons == null) || (coupons.isEmpty()))
-            refresh();
-         for (Coupon c : coupons) {
-            if(c.getIdCoupon().intValue()== idC)
-                return c;
-        }
-        return null;
-    }
   
     /** 
      * Action handler - update the customer model in the database. 

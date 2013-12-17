@@ -11,6 +11,7 @@ import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
  *
@@ -28,18 +29,21 @@ public class UtilisateurManager {
         Query query = em.createNamedQuery("Utilisateur.findAll");
         return query.getResultList();
     }
-    public Boolean authUtilisateur(String login, String password){
+
+    public Boolean authUtilisateur(String login, String password) {
         Query query = em.createNamedQuery("Utilisateur.findByMailU");
         query.setParameter("mailU", login);
         List<Utilisateur> lu = query.getResultList();
-        for(Utilisateur u : lu)
-            if(u.getPassU().equals(password))
+        for (Utilisateur u : lu) {
+            if (u.getPassU().equals(password)) {
                 return true;
+            }
+        }
         return false;
     }
-    
+
     public Utilisateur insertUtilisateur() {
-        
+
         em.close();
         return null;
     }
@@ -52,18 +56,38 @@ public class UtilisateurManager {
     public void persist(Object object) {
         em.persist(object);
     }
-        
-    public Integer nextId(){
+
+    public Integer nextId() {
+        System.out.println("###yyyyyyyyyyyyyyyyyy###");
         Query query = em.createNamedQuery("Utilisateur.maxId");
-        Integer res = (Integer)query.getResultList().get(0);
-        if(res==null)
+        if (query.getResultList() == null || query.getResultList().isEmpty()) {
             return new Integer(0);
-        return res+1;
+        }
+
+        Integer res = (Integer) query.getResultList().get(0);
+        return res + 1;
+        //return new Integer(0);
     }
 
     public boolean emailUsed(String mail) {
         Query query = em.createNamedQuery("Utilisateur.findByMailU");
         query.setParameter("mailU", mail);
         return !query.getResultList().isEmpty();
+    }
+
+    public Utilisateur getUserById(Integer id) {
+        List<Utilisateur> users = null;
+        users = getAllUtilisateurs();
+
+        System.out.println(id);
+        for (Utilisateur tmp : users) {
+            System.out.println(tmp);
+            System.out.println(tmp.getIdU() == id);
+            if (tmp.getIdU().intValue() == id) {
+                System.out.println("here");
+                return tmp;
+            }
+        }
+        return null;
     }
 }

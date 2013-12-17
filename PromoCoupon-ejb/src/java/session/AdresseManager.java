@@ -37,9 +37,10 @@ public class AdresseManager {
     
     public Long nextId(){
         Query query = em.createNamedQuery("Adresse.maxId");
-        Long res = (Long)query.getResultList().get(0);
-        if(res==null)
+        if(query.getResultList()==null || query.getResultList().isEmpty())
             return new Long(0);
+        
+        Long res = (Long)query.getResultList().get(0);
         return res+1;
     }
 }
