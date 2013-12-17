@@ -63,14 +63,16 @@ public class InscriptionCMDMBean implements Serializable{
     }
 
     public String save() {
-        user = userM.getUserById(new Integer(0));
-        if(user == null)
+        user = userM.getUserById(new Integer(1));
+        if(user == null){
+            System.out.println("ERROR.xhtml?msg=userInconnu");
             return "ERROR.xhtml?msg=userInconnu";
-        
-        coupon = couponM.getCouponById(new Integer(0));
-        if(coupon == null)
+        }
+        coupon = couponM.getCouponById(new Integer(1));
+        if(coupon == null){
+            System.out.println("ERROR.xhtml?msg=couponInconnu");
             return "ERROR.xhtml?msg=userInconnu";
-        
+        }
         
         adr.setIdAdresse(adrM.nextId());
         adr.setNumEtRue(settings.get("rue"));

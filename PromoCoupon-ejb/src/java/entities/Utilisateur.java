@@ -5,6 +5,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -69,6 +71,8 @@ public class Utilisateur implements Serializable {
     @JoinColumn(name = "adrU", referencedColumnName = "idAdresse")
     @ManyToOne
     private Adresse adrU;
+    @OneToMany(mappedBy = "idU")
+    private Collection<Commande> commandeCollection;
 
     public Utilisateur() {
     }
@@ -147,6 +151,14 @@ public class Utilisateur implements Serializable {
 
     public void setAdrU(Adresse adrU) {
         this.adrU = adrU;
+    }
+    
+    public Collection<Commande> getCommandeCollection() {
+        return commandeCollection;
+    }
+
+    public void setCommandeCollection(Collection<Commande> commandeCollection) {
+        this.commandeCollection = commandeCollection;
     }
 
     @Override

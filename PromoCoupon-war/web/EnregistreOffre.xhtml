@@ -6,6 +6,7 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
+       
     </h:head>
     <h:body>
         <f:view>
@@ -45,7 +46,25 @@
                     <h:inputText id="validation" value="#{inscriptEntrepriseMBean.settings['validation']}" title="Validation" />
                     
                     <h:outputLabel value="Categorie" for="categorie" />
+                    <h:outputLabel value="#{categorieMBean.categories.size}" id="lengthCatList"></h:outputLabel>
+                   
+                    <p:selectOneMenu value="#{categorieMBean.categories}" var="type" id="categorielist">
+                       <script>
+                            var list = document.getElementById("lengthCatList");
+                            for (p in list){
+                                
+                            }
+                        </script>
+                        <f:selectItem itemLabel="#{type.nomCateg}" itemValue="1"/>
+                        
+                        <f:selectItem itemLabel="#{type.idCateg}" itemValue="2"/>
+                   
+                    </p:selectOneMenu>
+                    
+                    
+                    
                     <h:inputText id="categorie" value="#{inscriptEntrepriseMBean.settings['categorie']}" title="Categorie" />
+                
                 </h:panelGrid> 
                 <h:commandButton id="update" value="Update" action="#{inscriptEntrepriseMBean.save()}"/> 
             </h:form>

@@ -29,7 +29,7 @@ public class ErrorMBean {
         
     @PostConstruct
     public void init() {
-        System.out.println(msg); 
+        System.out.println("###"+msg+"###"); 
     }
     
     public String getMessage(){

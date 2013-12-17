@@ -4,7 +4,6 @@
  */
 package managedbeans;
 
-import entities.Categorie;
 import entities.Offre;
 import java.math.BigDecimal;
 import java.util.Date;

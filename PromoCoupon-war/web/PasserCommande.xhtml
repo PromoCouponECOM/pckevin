@@ -42,7 +42,7 @@
                     <h:inputText id="MsgEntreprise" value="#{inscriptionCMDMBean.settings['msgEntreprise']}" title="MsgEntreprise" />
                 </h:panelGrid>
                 <h:commandButton id="back" value="Back" action="#{commandeMBean.list()}"/>  
-                <h:commandButton id="update" value="Update" action="#{inscriptionCMDMBean.update()}"/>  
+                <h:commandButton id="update" value="Update" action="#{inscriptionCMDMBean.save()}"/>  
             </h:form>
         </f:view>
     </h:body>
