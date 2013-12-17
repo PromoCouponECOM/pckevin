@@ -58,4 +58,9 @@ public class UtilisateurManager {
         return (Integer)query.getResultList().get(0)+1;
     }
 
+    public boolean emailUsed(String mail) {
+        Query query = em.createNamedQuery("Utilisateur.findByMailU");
+        query.setParameter("mailU", mail);
+        return !query.getResultList().isEmpty();
+    }
 }

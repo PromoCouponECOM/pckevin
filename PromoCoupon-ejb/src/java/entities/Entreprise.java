@@ -66,12 +66,12 @@ public class Entreprise implements Serializable {
     private String telE;
     @Lob
     @Column(name = "resuE")
-    private Serializable resuE;
+    private String resuE;
     @Size(max = 50)
     @Column(name = "consulE")
     private String consulE;
     @Column(name = "validation")
-    private Serializable validation;
+    private Integer validation;
     @Size(max = 14)
     @Column(name = "siret")
     private String siret;
@@ -136,11 +136,11 @@ public class Entreprise implements Serializable {
         this.telE = telE;
     }
 
-    public Serializable getResuE() {
+    public String getResuE() {
         return resuE;
     }
 
-    public void setResuE(Serializable resuE) {
+    public void setResuE(String resuE) {
         this.resuE = resuE;
     }
 
@@ -152,11 +152,11 @@ public class Entreprise implements Serializable {
         this.consulE = consulE;
     }
 
-    public Serializable getValidation() {
+    public Integer getValidation() {
         return validation;
     }
 
-    public void setValidation(Serializable validation) {
+    public void setValidation(Integer validation) {
         this.validation = validation;
     }
 

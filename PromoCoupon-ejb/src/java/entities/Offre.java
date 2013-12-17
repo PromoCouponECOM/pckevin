@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     
     @NamedQuery(name = "Offre.maxId", query = "SELECT max(o.idO) FROM Offre o"),
+    @NamedQuery(name = "Offre.findByType", query = "SELECT o FROM Offre o"),
     @NamedQuery(name = "Offre.findAll", query = "SELECT o FROM Offre o"),
     @NamedQuery(name = "Offre.findByIdO", query = "SELECT o FROM Offre o WHERE o.idO = :idO"),
     @NamedQuery(name = "Offre.findByTitle", query = "SELECT o FROM Offre o WHERE o.title = :title"),
@@ -70,15 +71,15 @@ public class Offre implements Serializable {
     private Date dateFin;
     @Lob
     @Column(name = "dscription")
-    private Serializable dscription;
+    private String dscription;
     @Lob
     @Column(name = "image")
-    private Serializable image;
+    private String image;
     @Lob
     @Column(name = "conseille")
-    private Serializable conseille;
+    private String conseille;
     @Column(name = "validation")
-    private Serializable validation;
+    private Integer validation;
     @Column(name = "dateModif")
     @Temporal(TemporalType.DATE)
     private Date dateModif;
@@ -150,35 +151,35 @@ public class Offre implements Serializable {
         this.dateFin = dateFin;
     }
 
-    public Serializable getDscription() {
+    public String getDscription() {
         return dscription;
     }
 
-    public void setDscription(Serializable dscription) {
+    public void setDscription(String dscription) {
         this.dscription = dscription;
     }
 
-    public Serializable getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Serializable image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
-    public Serializable getConseille() {
+    public String getConseille() {
         return conseille;
     }
 
-    public void setConseille(Serializable conseille) {
+    public void setConseille(String conseille) {
         this.conseille = conseille;
     }
 
-    public Serializable getValidation() {
+    public Integer getValidation() {
         return validation;
     }
 
-    public void setValidation(Serializable validation) {
+    public void setValidation(Integer validation) {
         this.validation = validation;
     }
 
