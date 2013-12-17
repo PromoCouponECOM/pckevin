@@ -21,12 +21,15 @@ import javax.enterprise.context.RequestScoped;
  * @author John624
  */
 @Named(value="sessionMBean")
-@RequestScoped
+@SessionScoped
 public class SessionMBean implements Serializable{
     public enum State { NotConnected, ConnectedAsCustomer, ConnectedAsOrganization, ConnectedAsAdmin }
+    
     private State state;
     private Integer idUser;
     private String loginName;
+    
+    
     @EJB
     private UtilisateurManager UM;
     @EJB
@@ -47,14 +50,16 @@ public class SessionMBean implements Serializable{
         if(UM.authUtilisateur(login, password)){
             this.loginName=login;
             this.state=State.ConnectedAsCustomer;
+            return "index";
         }
         else{
             if(EM.authEntreprise(login, password)){
                 this.loginName=login;
                 this.state=State.ConnectedAsOrganization;
+                return "offresEntreprise";
             }
         }
-        return this.state.toString();
+        return "#";
     }
     
     public State adminConnect(String login, String password){
@@ -64,6 +69,15 @@ public class SessionMBean implements Serializable{
     public State getState(){
         return this.state;
     }
+    
+    public Boolean isConnectedAsCustomer(){
+        return this.state == State.ConnectedAsCustomer;
+    }
+
+    public Boolean isConnectedAsOrganization(){
+        return this.state == State.ConnectedAsOrganization;
+    }
+    
     
     public String getLogin(){
         return this.loginName;

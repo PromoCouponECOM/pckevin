@@ -32,7 +32,7 @@ public class EntrepriseManager {
         query.setParameter("mailE", login);
         List<Entreprise> le = query.getResultList();
         for(Entreprise e : le)
-            if(e.getPassE().endsWith(password))
+            if(e.getPassE().equals(password))
                 return true;
         return false;
     }

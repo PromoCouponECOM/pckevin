@@ -33,7 +33,7 @@ public class UtilisateurManager {
         query.setParameter("mailU", login);
         List<Utilisateur> lu = query.getResultList();
         for(Utilisateur u : lu)
-            if(u.getPassU().endsWith(password))
+            if(u.getPassU().equals(password))
                 return true;
         return false;
     }
