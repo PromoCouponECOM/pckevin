@@ -6,6 +6,8 @@
 
 package managedbeans;
 
+import entities.Adresse;
+import entities.Commande;
 import entities.Coupon;
 import entities.Livraison;
 import entities.Utilisateur;
@@ -14,28 +16,39 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+import session.AdresseManager;
+import session.CommandeManager;
+import session.CouponManager;
+import session.LivraisonManager;
+import session.UtilisateurManager;
 
 /**
  *
  * @author liuju
  */
 @Named(value = "inscriptionCMDMBean")
-@SessionScoped
+@RequestScoped
 public class InscriptionCMDMBean implements Serializable{
 
     private Map<String, String> settings;
     @EJB
-    private CouponMBean couponM;
+    private CouponManager couponM;
     @EJB
-    private LivraisonMBean livM;
+    private LivraisonManager livM;
     @EJB
-    private UtilisateurMBean userM;
+    private UtilisateurManager userM;
+    @EJB
+    private CommandeManager cmdM;
+    @EJB
+    private AdresseManager adrM;
     
     private Utilisateur user;
     private Coupon coupon;
     private Livraison liv;
+    private Commande cmd;
+    private Adresse adr;
     
     /**
      * Creates a new instance of InscriptionCMDMBean
@@ -45,6 +58,8 @@ public class InscriptionCMDMBean implements Serializable{
         user = new Utilisateur();
         coupon = new Coupon();
         liv = new Livraison();
+        cmd = new Commande();
+        adr = new Adresse();
     }
 
     public String save() {
@@ -55,7 +70,42 @@ public class InscriptionCMDMBean implements Serializable{
         coupon = couponM.getCouponById(new Integer(0));
         if(coupon == null)
             return "ERROR.xhtml?msg=userInconnu";
-
+        
+        
+        adr.setIdAdresse(adrM.nextId());
+        adr.setNumEtRue(settings.get("rue"));
+        adr.setComple(settings.get("compl"));
+        adr.setVille(settings.get("ville"));
+        adr.setPays(settings.get("pays"));
+        adr.setCodePostale(settings.get("code"));
+        adr.setDateModif(new Date());
+        adrM.update(adr);
+        
+        liv.setIdL(livM.nextId());
+        liv.setNomRecep("nomRecep");
+        liv.setPrenomRecep("prenomRecep");
+        liv.setTelRecep("telRecep");
+        liv.setAdrRecep(adr);
+        livM.update(liv);
+        
+        cmd.setIdC(cmdM.nextId());
+        cmd.setIdCoupon(coupon);
+        cmd.setIdLivraison(liv);
+        cmd.setIdU(user);
+        cmd.setMomentC(new Date());
+        cmd.setMsgClient(settings.get("msgClient"));
+        cmd.setMsgEntreprise(settings.get("msgEntreprise"));
+        cmd.setStatus("payed");
+        cmdM.update(cmd);
+        
+        //3--coupon vendu
+        Short s = 3;
+        coupon.setStatus(s);
+        couponM.update(coupon);
         return "CommandeList";
+    }
+    
+    public Map<String, String> getSettings() {
+        return settings;
     }
 }

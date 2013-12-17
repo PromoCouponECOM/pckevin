@@ -66,4 +66,16 @@ public class UtilisateurManager {
         query.setParameter("mailU", mail);
         return !query.getResultList().isEmpty();
     }
+    
+        
+    public Utilisateur getUserById(Integer id){
+        List<Utilisateur> users =null;
+        users = getAllUtilisateurs();
+        
+        for (Utilisateur tmp : users) {
+            if(tmp.getIdU()==id)
+                return tmp;
+        }
+        return null;
+    }
 }

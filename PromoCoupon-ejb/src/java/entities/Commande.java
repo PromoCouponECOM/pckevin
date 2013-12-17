@@ -55,9 +55,9 @@ public class Commande implements Serializable {
     @JoinColumn(name = "idLivraison", referencedColumnName = "idL")
     @ManyToOne
     private Livraison idLivraison;
-    @JoinColumn(name = "idU", referencedColumnName = "idE")
+    @JoinColumn(name = "idU", referencedColumnName = "idU")
     @ManyToOne
-    private Entreprise idU;
+    private Utilisateur idU;
     @JoinColumn(name = "idCoupon", referencedColumnName = "idCoupon")
     @ManyToOne
     private Coupon idCoupon;
@@ -117,11 +117,11 @@ public class Commande implements Serializable {
         this.idLivraison = idLivraison;
     }
 
-    public Entreprise getIdU() {
+    public Utilisateur getIdU() {
         return idU;
     }
 
-    public void setIdU(Entreprise idU) {
+    public void setIdU(Utilisateur idU) {
         this.idU = idU;
     }
 

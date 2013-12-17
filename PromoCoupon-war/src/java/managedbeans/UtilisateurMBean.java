@@ -93,15 +93,5 @@ public class UtilisateurMBean implements Serializable {
         System.out.println("###LIST###");
         return "UtilisateurList";
     }
-    
-    public Utilisateur getUserById(Integer id){
-         if ((users == null) || (users.isEmpty())) {
-            refresh();
-        }
-        for (Utilisateur tmp : users) {
-            if(tmp.getIdU()==id)
-                return tmp;
-        }
-        return null;
-    }
+
 }

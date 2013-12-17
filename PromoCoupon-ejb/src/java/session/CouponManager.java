@@ -53,4 +53,14 @@ public class CouponManager {
         query.setParameter("reference", reference);
         return !query.getResultList().isEmpty();
     }
+    
+        
+    public Coupon getCouponById(Integer idC){
+         List<Coupon> coupons = getAllCoupons();
+         for (Coupon c : coupons) {
+            if(c.getIdCoupon().intValue()== idC)
+                return c;
+        }
+        return null;
+    }
 }

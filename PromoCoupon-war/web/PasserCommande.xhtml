@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+         <f:view>
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                 <h:panelGrid columns="2">
+                    <h:outputLabel value="NomRecep" for="nomRecep" />
+                    <h:inputText id="nomRecep" value="#{inscriptionCMDMBean.settings['nomRecep']}" title="NomRecep" />
+                    
+                    <h:outputLabel value="PrenomRecep" for="prenomRecep" />
+                     <h:inputText id="prenomRecep" value="#{inscriptionCMDMBean.settings['prenomRecep']}" title="PrenomRecep" />
+                     
+                    <h:outputLabel value="TelRecep" for="telRecep" />
+                    <h:inputText id="telRecep" value="#{inscriptionCMDMBean.settings['telRecep']}" title="TelRecep" />
+                     
+                    <h:outputLabel value="NumEtRue" for="numEtRue" />
+                    <h:inputText id="numEtRue" value="#{inscriptionCMDMBean.settings['rue']}" title="NumEtRue" />
+                    
+                    <h:outputLabel value="Comple:" for="comple" />
+                    <h:inputText id="comple" value="#{inscriptionCMDMBean.settings['compl']}" title="Comple" />
+                    
+                    <h:outputLabel value="CodePostale:" for="codePostale" />
+                    <h:inputText id="codePostale" value="#{inscriptionCMDMBean.settings['code']}" title="CodePostale" />
+                    
+                    <h:outputLabel value="Ville:" for="ville" />
+                    <h:inputText id="ville" value="#{inscriptionCMDMBean.settings['ville']}" title="Ville" />
+                    
+                    <h:outputLabel value="Pays:" for="pays" />
+                    <h:inputText id="pays" value="#{inscriptionCMDMBean.settings['pays']}" title="Pays" />
+                    
+                    <h:outputText value="MsgClient"/>
+                    <h:inputText id="msgClient" value="#{inscriptionCMDMBean.settings['msgClient']}" title="MsgClient" />
+                    
+                    <h:outputText value="MsgEntreprise"/>
+                    <h:inputText id="MsgEntreprise" value="#{inscriptionCMDMBean.settings['msgEntreprise']}" title="MsgEntreprise" />
+                </h:panelGrid>
+                <h:commandButton id="back" value="Back" action="#{commandeMBean.list()}"/>  
+                <h:commandButton id="update" value="Update" action="#{inscriptionCMDMBean.update()}"/>  
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
