@@ -37,8 +37,10 @@ import javax.xml.bind.annotation.XmlTransient;
     
     @NamedQuery(name = "Offre.maxId", query = "SELECT max(o.idO) FROM Offre o"),
     @NamedQuery(name = "Offre.findAll", query = "SELECT o FROM Offre o"),
+    @NamedQuery(name = "Offre.findByType", query = "SELECT o.idO FROM Offre o join Categorie c on o.categorie=c.idCateg WHERE c.nomCateg = 'Resto'"),
     @NamedQuery(name = "Offre.findByIdO", query = "SELECT o FROM Offre o WHERE o.idO = :idO"),
     @NamedQuery(name = "Offre.findByTitle", query = "SELECT o FROM Offre o WHERE o.title = :title"),
+    @NamedQuery(name = "Offre.findByIdC", query = "SELECT o FROM Offre o WHERE o.categorie = :categorie"),
     @NamedQuery(name = "Offre.findByPrixOrigin", query = "SELECT o FROM Offre o WHERE o.prixOrigin = :prixOrigin"),
     @NamedQuery(name = "Offre.findByPrixActuel", query = "SELECT o FROM Offre o WHERE o.prixActuel = :prixActuel"),
     @NamedQuery(name = "Offre.findByDateDebut", query = "SELECT o FROM Offre o WHERE o.dateDebut = :dateDebut"),

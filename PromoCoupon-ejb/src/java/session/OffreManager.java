@@ -4,6 +4,7 @@
  */
 package session;
 
+import entities.Categorie;
 import entities.Offre;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -11,6 +12,7 @@ import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -64,8 +66,15 @@ public class OffreManager {
     }
     
     public List<Offre> getSpecialOffres (String typeOffre){
-        Query query = em.createQuery("SELECT o FROM Offre o join Ctegorie c on o.categorie=c.idCateg WHERE c.nomCateg =:"+typeOffre);
-        return query.getResultList();
+        Query queryCategorie = em.createNamedQuery("Categorie.findByNomCateg");
+        queryCategorie.setParameter("nomCateg", typeOffre);
+        
+        Categorie idc = (Categorie)queryCategorie.getResultList().get(0);
+        
+        Query queryOffre = em.createNamedQuery("Offre.findByIdC");
+        queryOffre.setParameter("categorie",idc);
+        
+        System.out.println("###hello"+queryOffre.getResultList()+"###");
+        return queryOffre.getResultList();
     }
-    
 }

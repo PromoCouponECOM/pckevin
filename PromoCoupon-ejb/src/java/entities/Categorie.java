@@ -58,6 +58,10 @@ public class Categorie implements Serializable {
     public Categorie(Short idCateg) {
         this.idCateg = idCateg;
     }
+    
+    public Categorie(String nomCateg){
+        this.nomCateg=nomCateg;
+    }
 
     public Short getIdCateg() {
         return idCateg;

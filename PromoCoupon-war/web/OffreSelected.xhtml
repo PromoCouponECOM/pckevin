@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <h:dataTable value="#{offreMBean.offresSelected}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdO"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idO}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Title"/>
+                        </f:facet>
+                        <h:outputText value="#{item.title}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="PrixOrigin"/>
+                        </f:facet>
+                        <h:outputText value="#{item.prixOrigin}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="PrixActuel"/>
+                        </f:facet>
+                        <h:outputText value="#{item.prixActuel}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="DateDebut"/>
+                        </f:facet>
+                        <h:outputText value="#{item.dateDebut}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="DateFin"/>
+                        </f:facet>
+                        <h:outputText value="#{item.dateFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Dscription"/>
+                        </f:facet>
+                        <h:outputText value="#{item.dscription}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Image"/>
+                        </f:facet>
+                        <h:outputText value="#{item.image}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Conseille"/>
+                        </f:facet>
+                        <h:outputText value="#{item.conseille}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Validation"/>
+                        </f:facet>
+                        <h:outputText value="#{item.validation}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="DateModif"/>
+                        </f:facet>
+                        <h:outputText value="#{item.dateModif}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="NbCoupons"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nbCoupons}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Limite"/>
+                        </f:facet>
+                        <h:outputText value="#{item.limite}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdE"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idE}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Categorie"/>
+                        </f:facet>
+                        <h:outputText value="#{item.categorie}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+        Hello from Facelets
+    </h:body>
+</html>
+

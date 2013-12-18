@@ -55,7 +55,7 @@ public class EntrepriseManager {
     public Entreprise getEntrepriseByName(String entrerpise) {
         Query query = em.createNamedQuery("Entreprise.findByNomE");
         query.setParameter("nomE", entrerpise);
-        Entreprise res = (Entreprise)query.getSingleResult();        
+        Entreprise res = (Entreprise)query.getResultList().get(0);        
         return res;
     }
 }
