@@ -15,21 +15,24 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import session.OffreManager;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 
 /**
  *
  * @author John624
  */
 @Named(value = "offreMBean")
-@RequestScoped
+@SessionScoped
 public class OffreMBean implements Serializable {
 
     private List<Offre> offres;
     private List<Offre> offresSelected;
+
     @EJB
     private OffreManager offreManager;
     private Offre offre;
     private Offre selectedOffre;
+
     private String type;
 
     /**
@@ -92,13 +95,15 @@ public class OffreMBean implements Serializable {
     }
 
     public Offre getSelectedOffre() {
+        //System.out.println("getSelectedOffre: "+selectedOffre.getIdO().longValue());
         return selectedOffre;
     }
 
     public void setSelectedOffre(Offre selectedOffre) {
+        //System.out.println("setSelectedOffre: "+selectedOffre.getIdO().longValue());
         this.selectedOffre = selectedOffre;
     }
-
+    
     public List<Offre> getOffres() {
         if ((offres == null) || (offres.isEmpty())) {
             offres = offreManager.getAllOffre();
@@ -107,8 +112,8 @@ public class OffreMBean implements Serializable {
     }
 
     public List<Offre> getOffresSelected() {
-        if ((offres == null) || (offres.isEmpty())) {
-            System.out.println("###test###");
+        if (type == null || type.equals("tous")){
+            return offreManager.getAllOffre();
         }
         offresSelected = offreManager.getSpecialOffres("Resto");
         //System.out.println("###"+offresSelected+"###");
@@ -142,10 +147,10 @@ public class OffreMBean implements Serializable {
 
     public String showTypeOffre() {
         //this.getOffresSelected();
-        System.out.println("###" + type + "###");
-        List<Offre> tmp = new ArrayList<Offre>();
-        tmp = offreManager.getSpecialOffres(type);
-        return "OffreSelected";
+        //System.out.println("###" + type + "###");
+        //List<Offre> tmp = new ArrayList<Offre>();
+        //tmp = offreManager.getSpecialOffres(type);
+        return "touteslespromos";
     }
 
     public String getType() {

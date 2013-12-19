@@ -29,6 +29,7 @@ public class OffreManager {
         return query.getResultList();
     }
     
+    
     public String getTitreOffre(int idOffre){
         Query query= em.createNamedQuery("Offre.findByIdO");
         query.setParameter("IdO", idOffre);
@@ -38,6 +39,18 @@ public class OffreManager {
             return tmp.get(0).getTitle();
         return null;
     }
+    
+     public Offre getOffreById(long idOffre) {
+        Query query= em.createNamedQuery("Offre.findByIdO");
+        query.setParameter("idO", idOffre);
+        
+        List<Offre> tmp = query.getResultList();
+        if(tmp!=null && !tmp.isEmpty())
+            return tmp.get(0);
+        return null;
+    }
+
+    
     
      public String getTitreEtPrixById(int idOffre){
         Query query= em.createNamedQuery("Offre.findByIdO");

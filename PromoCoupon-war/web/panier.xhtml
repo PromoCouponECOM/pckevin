@@ -3,81 +3,88 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"> 
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"> 
     <h:head>
-		<meta charset="utf-8" />
-        <link rel="stylesheet" href="css/style.css" />
-		<link rel="stylesheet" href="css/menu.css" />
-		<link rel="stylesheet" href="css/villes.css" />
-        <link rel="stylesheet" href="css/listeOffres.css" />
-		<link rel="stylesheet" href="css/toolbar.css" />
-        <link rel="stylesheet" href="css/listeOffres.css" />
-        
-		<script type="text/javascript">
-		$(document).ready(function(){
-			$('#boxLogin').hide(); //Si l'utilisateur a javascript on cache la box de login pour pas surcharger la page
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/signup.css" />
+        <link rel="stylesheet" href="css/menu.css" />
+        <link rel="stylesheet" href="css/signup.css" />
+        <link rel="stylesheet" href="css/toolbar.css" />
+        <script type="text/javascript" src="js/verif.js"/>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#boxLogin').hide(); //Si l'utilisateur a javascript on cache la box de login pour pas surcharger la page
 
-			$('.click_connect').click(function(){
-				$('#boxLogin').fadeIn(400);
-			});
+                $('.click_connect').click(function() {
+                    $('#boxLogin').fadeIn(400);
+                });
 
-			$('.fermer').click(function(){
-				$('#boxLogin').fadeOut(400);
-			});
+                $('.fermer').click(function() {
+                    $('#boxLogin').fadeOut(400);
+                });
 
-			$('#mdpPerdu').click(function(){
-				erreur("mdp_perdu");
-				return false;
-			});
+                $('#mdpPerdu').click(function() {
+                    erreur("mdp_perdu");
+                    return false;
+                });
 
-			$('.field').focus(function(){ //Supprime les textes par défauts des input lors du click sur ceux-ci
-				if($(this).val()=='Email' || $(this).val()=='Mot de passe' || $(this).val()=='Rechercher'){
-					$(this).val('');
-				}
-			});
-			
-			$('#listeVille').hide(); //Si l'utilisateur a javascript on cache l'affichage des villes
-			
-			$('.click_display_ville').click(function(){
-				if ($('#listeVille').is(':visible')) {
-					$('#listeVille').fadeOut(400);
-				}
-				else {
-					$('#listeVille').fadeIn(400);
-				}
-			});
-		});
-		</script>
-		<script type="text/javascript" src="js/lieu.js"></script>
-		
-        <title>Toutes les promos</title>
+                $('.field').focus(function() { //Supprime les textes par défauts des input lors du click sur ceux-ci
+                    if ($(this).val() == 'Email' || $(this).val() == 'Mot de passe' || $(this).val() == 'Rechercher') {
+                        $(this).val('');
+                    }
+                });
+
+                $('#listeVille').hide(); //Si l'utilisateur a javascript on cache l'affichage des villes
+
+                $('.click_display_ville').click(function() {
+                    if ($('#listeVille').is(':visible')) {
+                        $('#listeVille').fadeOut(400);
+                    }
+                    else {
+                        $('#listeVille').fadeIn(400);
+                    }
+                });
+            });
+        </script>
+
+        <title>Mon panier</title>
     </h:head>
     <h:body>
-       
-		<div id="wrapper">
-			<header>
+        <div id="wrapper">
+            <header>
 				<nav>
 					<div id="titre_principal">
 						<a href="index.xhtml"><span id="promo">Promo</span><span id="coupon">Coupon</span></a>
 					</div>
 					<div id="navigation">
-						<ul>
+						<ul><h:form> 
 							<li><a href="index.xhtml" style="color:#FFFFFF;">Accueil</a></li>
-							<li><a href="touteslespromos.xhtml" style="color:#FFFFFF;"> Toutes les promos</a></li>
+							<li><h:commandLink action="#{offreMBean.showTypeOffre()}" style="color:#FFFFFF;">Toutes les promos<f:setPropertyActionListener target="#{offreMBean.type}" value="tous" /></h:commandLink></li>
 							<li><a href="verschezmoi.xhtml" style="color:#FFFFFF;">Vers chez moi</a></li>
-						</ul>
+						</h:form> </ul>
 					</div>
-					<div id="compte">						
-						<a href="#" class="click_connect">S'identifier</a> | <a href="signup.xhtml">S'inscrire</a>
-					</div>
+					 <h:panelGroup id="compte">
+                        <c:choose>
+                            <c:when test="#{sessionMBean.isConnectedAsCustomer()}">
+                                <h:form id="compteLogged"><img src="icones/user_32.png" style="width:18px; height:18px;" alt="compte"/>&nbsp;<a href="userAccount.xhtml">Gérer compte</a> |  <h:commandLink action="#{sessionMBean.disconnect()}">Se deconnecter</h:commandLink></h:form>
+                            </c:when>
+                            <c:otherwise>
+                                <span id="compteNotLogged"><img src="icones/user_32.png" style="width:18px; height:18px;" alt="compte"/>&nbsp;<a href="#" class="click_connect">S'identifier</a> | <a href="signup.xhtml">S'inscrire</a></span>                   
+                            </c:otherwise>
+                        </c:choose>    
+					</h:panelGroup>
 					<div id="boxLogin">
 						<h3>Votre Compte</h3>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="fermer" class="fermer" href="#">fermer</a>
-						<form action="" method="post" name="form_connexion">
-							<input class="loginField" name="email" type="text" style="width:150px; height:13px;" value="Email" />
-							<input class="loginField" name="password" type="password" style="width:150px; height:13px;" value="Mot de passe" />
-							<input name="submit" type="submit" value="ok"/>
-						</form>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="fermer" class="fermer" href="#"><img src="icones/close_32.png" style="width:18px; height:18px;" alt="fermer"/></a>                       
+						<h:form id="formID"> 
+                            e-mail
+                            <br></br>
+							<h:inputText class="field" title="email" id="email" value="#{sessionMBean.loginNameTRY}" requiredMessage="Saisir votre e-mail" required="true" size="24" maxlength="24" style="width:150px; height:13px;"></h:inputText>
+                            <br></br>mot de passe<br></br>
+                            <h:inputSecret class="field" title="password" id="password" value="#{sessionMBean.passwordTRY}" requiredMessage="Saisir votre mot de passe" redisplay="true" required="true" size="24" maxlength="24" style="width:150px; height:13px;"></h:inputSecret>
+                            <p:commandButton id="submit" value="ok" styleClass="submit" actionListener="#{sessionMBean.tryConnection()}" update=":compte"/>
+						</h:form>
 						<a id="mdpPerdu" href="#" style="font-size:11px;">Mot de passe perdu ?</a>
 					</div>
 				</nav>
@@ -190,7 +197,7 @@
                         <h1>Mon Panier</h1>
 						   <h:form id="form"> 
                                 <h:panelGrid columns="5" style="width:100%;">
-                                    <p:dataGrid var="offre" value="#{sessionMBean.getOffresPanier2()}" columns="1"  
+                                    <p:dataGrid var="offre" value="#{sessionMBean.getListOffres()}" columns="1"  
                                         rows="8" paginator="true"  
                                         paginatorTemplate="">
                                         <p:panel>
